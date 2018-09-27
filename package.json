@@ -1,0 +1,33 @@
+{
+  "name": "haraka-plugin-auth-enc-file",
+  "version": "1.0.0",
+  "description": "Haraka plugin that uses an SHA512 salted and hashed password file to authenticate users",
+  "main": "index.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint *.js test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AuspeXeu/haraka-plugin-auth-enc-file.git"
+  },
+  "keywords": [
+    "haraka",
+    "plugin",
+    "template"
+  ],
+  "author": "Christian Vaas <chrisvaas@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AuspeXeu/haraka-plugin-auth-enc-file/issues"
+  },
+  "homepage": "https://github.com/AuspeXeu/haraka-plugin-auth-enc-file#readme",
+  "devDependencies": {
+    "eslint": ">=3",
+    "eslint-plugin-haraka": "*",
+    "haraka-test-fixtures": "*",
+    "mocha": "*"
+  },
+  "dependencies": {
+    "sha512crypt-node": "^0.1.0"
+  }
+}
