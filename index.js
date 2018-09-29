@@ -26,10 +26,7 @@ exports.check_plain_passwd = function (connection, user, passwd, cb) {
   const plugin = this;
   if (plugin.cfg.users[user]) {
     const [method, id, salt, hash] = plugin.cfg.users[user].split('$');
-    if (hasher.sha512crypt(passwd, salt) === `$${id}$${salt}$${hash}`) {
-      connection.notes.user = user;
-      return cb(true);
-    }
+    return cb(hasher.sha512crypt(passwd, salt) === `$${id}$${salt}$${hash}`);
   }
   return cb(false);
 }
