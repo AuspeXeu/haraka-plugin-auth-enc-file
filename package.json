@@ -1,6 +1,6 @@
 {
   "name": "haraka-plugin-auth-enc-file",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Haraka plugin that uses an SHA512 salted and hashed password file to authenticate users",
   "main": "index.js",
   "scripts": {
