@@ -3,8 +3,8 @@ const hasher = require('sha512crypt-node');
 exports.hook_capabilities = function (next, connection) {
   // Don't offer AUTH capabilities by default unless session is encrypted
   if (connection.tls.enabled) {
-    const methods = [ 'PLAIN', 'LOGIN' ];
-    connection.capabilities.push('AUTH ' + methods.join(' '));
+    const methods = ['PLAIN', 'LOGIN'];
+    connection.capabilities.push(`AUTH ${methods.join(' ')}`);
     connection.notes.allowed_auth_methods = methods;
   }
   next();
