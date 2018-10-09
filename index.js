@@ -1,6 +1,6 @@
-const hasher = require('sha512crypt-node');
+const {sha512crypt} = require('sha512crypt-node');
 
-exports.hook_capabilities = function (next, connection) {
+exports.hook_capabilities = (next, connection) => {
   // Don't offer AUTH capabilities by default unless session is encrypted
   if (connection.tls.enabled) {
     const methods = ['PLAIN', 'LOGIN'];
@@ -10,23 +10,19 @@ exports.hook_capabilities = function (next, connection) {
   next();
 }
 
-exports.register = function () {
+exports.register = () => {
   this.inherits('auth/auth_base');
   this.load_auth_enc_file_ini();
 }
 
-exports.load_auth_enc_file_ini = function () {
-  const plugin = this;
-  plugin.cfg = plugin.config.get('auth_enc_file.ini', function () {
-    plugin.load_auth_enc_file_ini();
-  });
+exports.load_auth_enc_file_ini = () => {
+  this.cfg = this.config.get('auth_enc_file.ini', this.load_auth_enc_file_ini);
 }
 
-exports.check_plain_passwd = function (connection, user, passwd, cb) {
-  const plugin = this;
-  if (plugin.cfg.users[user]) {
-    const [method, id, salt, hash] = plugin.cfg.users[user].split('$');
-    return cb(hasher.sha512crypt(passwd, salt) === `$${id}$${salt}$${hash}`);
+exports.check_plain_passwd = (connection, user, passwd, cb) => {
+  if (this.cfg.users[user]) {
+    const [method, id, salt, hash] = this.cfg.users[user].split('$');
+    return cb(sha512crypt(passwd, salt) === `$${id}$${salt}$${hash}`);
   }
   return cb(false);
 }
