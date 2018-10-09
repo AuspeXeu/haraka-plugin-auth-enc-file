@@ -1,6 +1,6 @@
 const {sha512crypt} = require('sha512crypt-node');
 
-exports.hook_capabilities = (next, connection) => {
+exports.hook_capabilities = function (next, connection) {
   // Don't offer AUTH capabilities by default unless session is encrypted
   if (connection.tls.enabled) {
     const methods = ['PLAIN', 'LOGIN'];
@@ -10,16 +10,16 @@ exports.hook_capabilities = (next, connection) => {
   next();
 }
 
-exports.register = () => {
+exports.register = function () {
   this.inherits('auth/auth_base');
   this.load_auth_enc_file_ini();
 }
 
-exports.load_auth_enc_file_ini = () => {
+exports.load_auth_enc_file_ini = function () {
   this.cfg = this.config.get('auth_enc_file.ini', this.load_auth_enc_file_ini);
 }
 
-exports.check_plain_passwd = (connection, user, passwd, cb) => {
+exports.check_plain_passwd = function (connection, user, passwd, cb) {
   if (this.cfg.users[user]) {
     const [method, id, salt, hash] = this.cfg.users[user].split('$');
     return cb(sha512crypt(passwd, salt) === `$${id}$${salt}$${hash}`);
