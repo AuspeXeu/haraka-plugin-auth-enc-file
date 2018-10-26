@@ -2,6 +2,8 @@
 
 # haraka-plugin-auth-enc-file
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/AuspeXeu/haraka-plugin-auth-enc-file.svg)](https://greenkeeper.io/)
+
 This plugin uses an encrypted file to authenticate a user. Currently only SHA512CRYPT is supported.
 
 Configuration
