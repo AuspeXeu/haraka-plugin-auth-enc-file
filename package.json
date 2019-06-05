@@ -28,6 +28,6 @@
     "mocha": "*"
   },
   "dependencies": {
-    "sha512crypt-node": "^0.1.0"
+    "sha512crypt-node": "0.1.0"
   }
 }
