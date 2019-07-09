@@ -23,7 +23,7 @@
   "homepage": "https://github.com/AuspeXeu/haraka-plugin-auth-enc-file#readme",
   "devDependencies": {
     "eslint": ">=5",
-    "eslint-plugin-haraka": "*",
+    "eslint-plugin-haraka": ">=1.0.11",
     "haraka-test-fixtures": "*",
     "mocha": "*"
   },
