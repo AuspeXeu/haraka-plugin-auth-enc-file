@@ -24,7 +24,7 @@
   "devDependencies": {
     "eslint": ">=6",
     "eslint-plugin-haraka": "*",
-    "haraka-test-fixtures": "*",
+    "haraka-test-fixtures": ">=1.0.30",
     "mocha": "*"
   },
   "dependencies": {
