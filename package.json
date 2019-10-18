@@ -25,7 +25,7 @@
     "eslint": ">=6",
     "eslint-plugin-haraka": "*",
     "haraka-test-fixtures": "*",
-    "mocha": "*"
+    "mocha": ">=6.2.2"
   },
   "dependencies": {
     "sha512crypt-node": "0.1.0"
